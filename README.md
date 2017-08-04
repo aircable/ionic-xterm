@@ -1,26 +1,33 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+Ionic 3 Xterm.js Testproject
 
-## How to use this template
+## This test is not yet working.
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+*Please help to get the [xterm.js](https://github.com/sourcelair/xterm.js) integrated into an Ionic 3 project*. 
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
 
 ### With the Ionic CLI:
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
-
+This app was created with:
 ```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
+$ ionic start ionic-xterm --type=ionic-angular
+$ cd ionic-xterm
+$ npm install
+$ npm install --save ajv
+$ npm install --save xterm
+$ npm install --save @types/xterm
 ```
 
-Then, to run it, cd into `myBlank` and run:
+Then, to run it, cd into `ionic-xterm` and run:
+
+```bash
+$ ionic serve -lc
+```
+
+Testing on iOS:
 
 ```bash
 $ ionic cordova platform add ios
-$ ionic cordova run ios
+$ ionic cordova build ios
 ```
 
-Substitute ios for android if not on a Mac.
-
+Then use Xcode to compile app and run on device.
