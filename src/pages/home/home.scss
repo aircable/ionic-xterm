@@ -1,4 +1,5 @@
 .home {
+}
 
 /**
  * xterm.js: xterm, in the browser
@@ -153,7 +154,8 @@
   .terminal .xterm-rows {
     position: absolute;
     left: 0;
-    top: 0;
+    /* changes where the characters are */
+    top: 50px;
   }
 
   .terminal .xterm-rows > div {
@@ -2262,5 +2264,3 @@
     background-color: #eeeeee;
   }
 
-
-}

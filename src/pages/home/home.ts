@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import * as Terminal from "xterm";
@@ -6,34 +6,42 @@ import * as Terminal from "xterm";
 import "xterm/dist/addons/fit/fit";
 
 @Component({
-  selector: 'terminal',
-  templateUrl: "home.html",
-  //styles: [ style ]
-  //styleUrls: ["./xterm.css"]
+    selector: 'terminal',
+    templateUrl: "home.html",
+    //styles: [ style ]
+    //styleUrls: ["./xterm.css"]
 })
 
-export class HomePage implements OnInit {
+export class HomePage {
 
-  private term: Terminal;
+    private term: Terminal;
 
-  constructor( public navCtrl: NavController ) {
+    constructor(public navCtrl:NavController) {
 
-    this.term = new Terminal( {cursorBlink: true} );
-    this.term.open( document.getElementById("terminal") );
+        Terminal.loadAddon("fit");
 
-    //Terminal.loadAddon( "fit" );
+        this.term = new Terminal({
+            cursorBlink: true,
+            useStyle: true,
+            scrollback: 200,
+            rows: 80,
+        });
+        this.term.open( document.getElementById( "#terminal" ));
 
-    //this.term.fit();
+        // now it works
+        this.term.fit();
 
-    this.term.writeln('Welcome to xterm.js');
+        this.term.writeln('Welcome to xterm.js');
 
-    // this is
-    this.term.on('key', (key, ev) => {
-      console.log( key );
-    });
+        // this is just simple echo
+        this.term.on('key', (key, ev) => {
+            console.log(key.charCodeAt(0));
+            if (key.charCodeAt(0) == 13)
+                this.term.write('\n');
+            this.term.write(key);
+        });
 
-  }
+    }
 
-  ngOnInit () {}
 
 }
