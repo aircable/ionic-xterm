@@ -4,11 +4,21 @@
       Ionic Xterm
     </ion-title>
   </ion-navbar>
+
+    <ion-grid>
+
+        <ion-row>
+            <ion-input style="background-color: #E0E0E0" type="text" autocapitalize="none" autocorrect="off" placeholder="command line" [(ngModel)]="transmit">
+            </ion-input>
+
+            <button ion-button small item-end outline (click)="sendText()">Send</button>
+        </ion-row>
+
+    </ion-grid>
+
 </ion-header>
 
-<ion-content>
-    <div id="terminal" style="font-size: 1em; color: #111;">
-        </div>
-
+<ion-content padding>
+    <ion-textbox #terminal></ion-textbox>
 </ion-content>
 

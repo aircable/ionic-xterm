@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import * as Terminal from "xterm";
@@ -12,9 +12,11 @@ import "xterm/dist/addons/fit/fit";
     //styleUrls: ["./xterm.css"]
 })
 
-export class HomePage {
+export class HomePage implements AfterViewInit {
 
     private term: Terminal;
+    // this finds the #terminal element, after view init
+    @ViewChild('terminal' ) terminal: ElementRef;
 
     constructor(public navCtrl:NavController) {
 
@@ -22,16 +24,10 @@ export class HomePage {
 
         this.term = new Terminal({
             cursorBlink: true,
-            useStyle: true,
-            scrollback: 200,
-            rows: 80,
+            //useStyle: true,
+            scrollback: 60,
+            rows: 30,
         });
-        this.term.open( document.getElementById( "#terminal" ));
-
-        // now it works
-        this.term.fit();
-
-        this.term.writeln('Welcome to xterm.js');
 
         // this is just simple echo
         this.term.on('key', (key, ev) => {
@@ -40,6 +36,20 @@ export class HomePage {
                 this.term.write('\n');
             this.term.write(key);
         });
+
+    }
+
+    // getting the nativeElement only possible after view init
+    ngAfterViewInit() {
+
+        // this now finds the #terminal element
+        this.term.open( this.terminal.nativeElement, true );
+
+        // calling fit is not quite working
+        // uses the obscure ion-textbox, which does not really exist, but changes the font size
+        // the number of rows will determine the size of the terminal screen
+        this.term.fit();
+        this.term.writeln('Welcome to xterm.js');
 
     }
 

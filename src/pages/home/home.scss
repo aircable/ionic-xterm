@@ -1,6 +1,7 @@
 .home {
 }
 
+
 /**
  * xterm.js: xterm, in the browser
  * Copyright (c) 2014-2016, SourceLair Private Company (www.sourcelair.com (MIT License)
@@ -154,8 +155,7 @@
   .terminal .xterm-rows {
     position: absolute;
     left: 0;
-    /* changes where the characters are */
-    top: 50px;
+    top: 0;
   }
 
   .terminal .xterm-rows > div {
