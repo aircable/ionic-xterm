@@ -1,8 +1,9 @@
 Ionic 3 Xterm.js Testproject
 
-## This test is not yet working.
+## This test is sort of working now.
 
 *Please help to get the [xterm.js](https://github.com/sourcelair/xterm.js) integrated into an Ionic 3 project*. 
+Some style things are a bit weird, e.g. the use of <ion-textbox> which makes it look good, but does not exist.
 
 
 ### With the Ionic CLI:
